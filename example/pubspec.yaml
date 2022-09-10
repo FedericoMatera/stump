@@ -1,0 +1,20 @@
+name: example
+description: Stump example
+
+version: 1.0.0
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  stump:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+publish_to: none
