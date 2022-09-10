@@ -1,39 +1,49 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Stump is a logger for Flutter inspired by Timber.
+It provides a set of static methods to easily log messages and the support to multiple and custom printers.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Initialize Stump by adding StumpPrinter implementations to it in the main() of your app.
+The library come with a printer implementation, DebugPrinter, that prints messages by using `debugPrint`, with automatic tag inference and color based on log level.
+You can add as many StumpPrinter as you want.
+
+### Example: basic setup
+```dart
+Stump.addPrinter(DebugPrinter());
+````
+
+### Example: DebugPrinter in debug only (no logs in release)
+```dart
+if (kDebugMode) {
+  Stump.addPrinter(DebugPrinter());
+}
+````
+### Example: DebugPrinter in debug and a custom printer in release
+```dart
+if (kDebugMode) {
+  Stump.addPrinter(DebugPrinter());
+} else {
+  Stump.addPrinter(MyCustomPrinter());
+}
+````
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+Stump.i('My info log message');
+Stump.d('My debug log message');
+Stump.w('My warning log message');
+Stump.e('My error log message');
 ```
 
-## Additional information
+The result, if launched with DebugPrinter installed, will be similar to:
+![Stump DebugPrinter example](/example/stump_example.png "Stump DebugPrinter example")
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+You can optionally provide error and stacktrace to errors:
+```dart
+try {
+  throw 'A very bad error';
+} catch (error, stackTrace) {
+  Stump.e('My error log message', error: error, stackTrace: stackTrace);
+}
+```
