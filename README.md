@@ -1,4 +1,4 @@
-Stump is a logger for Flutter inspired by Timber.
+Stump is a Flutter logger inspired by Timber.
 It provides a set of static methods to easily log messages and the support to multiple and custom printers.
 
 ## Getting started

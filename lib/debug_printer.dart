@@ -3,8 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 import 'package:stack_trace/stack_trace.dart';
 
-import 'stump_printer.dart';
-
+/// Default printer implementation.
+/// Prints log-level based colored messages and automatically infers the tag
 class DebugPrinter implements StumpPrinter {
   static const ansiEsc = '\x1B[';
   static const ansiDefault = '${ansiEsc}0m';

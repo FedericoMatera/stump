@@ -1,6 +1,6 @@
 name: stump
-description: A logger for Flutter inspired by Timber.
-version: 1.0.0
+description: Stump is a Flutter logger inspired by Timber. It provides a set of static methods to easily log messages and the support to multiple and custom printers.
+version: 1.0.1
 repository: https://github.com/FedericoMatera/stump
 
 environment:
